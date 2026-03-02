@@ -1,0 +1,9 @@
+services:
+  sharers-bible:
+    image: casmedlin/sharers-bible:latest
+    container_name: sharers-bible
+    ports:
+      - "8282:80"
+    restart: always
+    # TrueNAS SCALE specific labels can be added here if needed
+    # but for a Custom App, this basic structure is usually enough.
