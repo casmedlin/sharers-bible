@@ -1,31 +1,51 @@
 # 📖 Sharer's Bible
 
-A multi-platform Bible application designed for sharing and study. This project contains multiple versions of the application, ranging from native mobile apps to web and server-hosted versions.
+A multi-platform Bible application designed for sharing and study. Contains native macOS, iOS, web, and self-hosted server versions.
 
 ## 📂 Project Structure
 
-- **Sharer's Bible App**: Native macOS/desktop version of the application.
-- **Sharers Bible iOS**: Native iOS mobile application.
-- **Sharers Bible Web**: A modern web-based version built with React and Vite.
-- **Sharers Bible TrueNAS**: A self-hosted version optimized for TrueNAS/Docker environments.
+- **Sharer's Bible App** — Native macOS app (SwiftUI, single-file). Features 196 Bible versions via API, with KJV + ESV bundled offline. Full localization in 21 languages, download manager, and export to JSON/CSV/Markdown/HTML/plain text.
+- **Sharers Bible iOS** — Native iOS app for iPhone and iPad.
+- **Sharers Bible Web** — Modern web version built with React + TypeScript + Vite. PWA-ready with responsive UI.
+- **Sharers Bible TrueNAS** — Self-hosted version for TrueNAS/Docker environments.
 
-## 🚀 Versions
+## 🚀 macOS App Quick Start
 
-### 🌐 Web Version
-Built with **React + TypeScript + Vite**. It features a responsive UI and is designed to work as a PWA (Progressive Web App).
+```bash
+cd "Sharer's Bible App"
+xcrun swiftc -sdk $(xcrun --sdk macosx --show-sdk-path) -parse-as-library \
+  -o "build/Sharer's Bible App.app/Contents/MacOS/Sharer's Bible App" \
+  -Xlinker -rpath -Xlinker /usr/lib/swift ContentView.swift
+```
 
-### 📱 iOS Version
-A native Apple experience for iPhone and iPad, providing a smooth reading and sharing interface.
+The app is a single Swift file (`ContentView.swift`, ~4000 lines) compiled directly with `swiftc`. No Xcode project, Swift Package Manager, or CocoaPods needed.
 
-### 🖥 macOS App
-A dedicated desktop application for Bible study and preparation.
+### Data Sources
+- **Bundled offline**: KJV + ESV (`bibles/en/kjv.json`, `bibles/en/esv.json`)
+- **On-demand API**: 194 additional versions from `https://apibible.wbem.org/api` (free, no auth, no rate limits)
+- **Download manager**: Pick a language and download all versions for offline use — stored in `~/Library/Application Support/Sharer's Bible/bibles/`
 
-### 🐳 TrueNAS / Docker
-Containerized version of the Sharer's Bible for personal home servers. Supports easy deployment via `docker-compose`.
+### Features
+- Book/chapter/verse navigation with verse-range picker
+- 21 languages for UI and book names (localized via embedded dictionaries)
+- 196 Bible versions in 80+ languages
+- Themes: Light, Dark, Sepia, System
+- Share menu: Copy text, Copy as JSON, Copy as CSV, Export to Markdown, Export to plain text, Export to HTML (theme-colored)
+- Settings: Language, theme, font size, download manager
+
+## 📱 iOS Version
+Native Apple experience for iPhone and iPad with a smooth reading and sharing interface.
+
+## 🌐 Web Version
+Built with **React + TypeScript + Vite**. PWA-capable with responsive design.
+
+## 🐳 TrueNAS / Docker
+Containerized deployment for personal home servers via `docker-compose`.
 
 ## 🛠 Tech Stack
-- **Frontend**: React, TypeScript, SwiftUI (for iOS/macOS)
-- **Build Tools**: Vite, Xcode
+- **Desktop**: SwiftUI (macOS 14+), compiled with `swiftc`
+- **Mobile**: SwiftUI (iOS)
+- **Web**: React, TypeScript, Vite
 - **Deployment**: Docker, TrueNAS
 
 ## 📝 License

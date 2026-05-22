@@ -77,11 +77,20 @@ const books: BibleBook[] = [
 ];
 
 function App() {
-  const [selectedVersion, setSelectedVersion] = useState('ESV');
-  const [selectedBook, setSelectedBook] = useState<BibleBook>(books.find(b => b.id === 43)!);
-  const [selectedChapter, setSelectedChapter] = useState(1);
-  const [startVerse, setStartVerse] = useState<number | ''>('');
-  const [endVerse, setEndVerse] = useState<number | ''>('');
+  const [selectedVersion, setSelectedVersion] = useState(() => localStorage.getItem('selectedVersion') || 'ESV');
+  const [selectedBook, setSelectedBook] = useState<BibleBook>(() => {
+    const savedId = localStorage.getItem('selectedBookId');
+    return (savedId ? books.find(b => b.id === Number(savedId)) : null) || books.find(b => b.id === 43)!;
+  });
+  const [selectedChapter, setSelectedChapter] = useState(() => Number(localStorage.getItem('selectedChapter')) || 1);
+  const [startVerse, setStartVerse] = useState<number | ''>(() => {
+    const saved = localStorage.getItem('startVerse');
+    return saved ? Number(saved) : '';
+  });
+  const [endVerse, setEndVerse] = useState<number | ''>(() => {
+    const saved = localStorage.getItem('endVerse');
+    return saved ? Number(saved) : '';
+  });
   
   const [verses, setVerses] = useState<Verse[]>([]);
   const [reference, setReference] = useState('');
@@ -146,6 +155,26 @@ function App() {
   useEffect(() => {
     fetchVerses();
   }, [fetchVerses]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedVersion', selectedVersion);
+  }, [selectedVersion]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedBookId', selectedBook.id.toString());
+  }, [selectedBook]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedChapter', selectedChapter.toString());
+  }, [selectedChapter]);
+
+  useEffect(() => {
+    localStorage.setItem('startVerse', startVerse.toString());
+  }, [startVerse]);
+
+  useEffect(() => {
+    localStorage.setItem('endVerse', endVerse.toString());
+  }, [endVerse]);
 
   useEffect(() => {
     localStorage.setItem('selectedTheme', currentTheme);
