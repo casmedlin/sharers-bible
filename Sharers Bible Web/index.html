@@ -10,7 +10,37 @@
     <meta name="apple-mobile-web-app-title" content="Sharer's Bible" />
     <link rel="apple-touch-icon" href="/bible.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <title>Sharer's Bible</title>
+    <title>Sharer's Bible — Read and Share God's Word</title>
+    <meta name="description" content="A beautiful, fast, and easy-to-use Bible reader designed for sharing scripture with others." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bible.wbem.org/" />
+    <meta property="og:title" content="Sharer's Bible — Read and Share God's Word" />
+    <meta property="og:description" content="A beautiful, fast, and easy-to-use Bible reader designed for sharing scripture with others." />
+    <meta property="og:image" content="/bible.svg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bible.wbem.org/" />
+    <meta property="twitter:title" content="Sharer's Bible — Read and Share God's Word" />
+    <meta property="twitter:description" content="A beautiful, fast, and easy-to-use Bible reader designed for sharing scripture with others." />
+    <meta property="twitter:image" content="/bible.svg" />
+
+    <script>
+      (function() {
+        var t = (localStorage.getItem('selectedTheme') || 'System').toLowerCase();
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <style>
+      body { background-color: #ffffff; margin: 0; }
+      [data-theme="dark"] body { background-color: #1a1a1a; }
+      [data-theme="sepia"] body { background-color: #f5f0e0; }
+      @media (prefers-color-scheme: dark) {
+        [data-theme="system"] body { background-color: #1a1a1a; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
