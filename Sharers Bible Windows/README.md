@@ -33,6 +33,13 @@ set GOARCH=arm64
 go build -o sharers-bible-arm64.exe
 ```
 
+### ARM64 (Surface Pro X, etc.)
+Works natively — Go cross-compiles without emulation:
+```bash
+set GOARCH=arm64
+go build -o sharers-bible-arm64.exe
+```
+
 Package as Windows installer:
 ```bash
 fyne package -os windows -icon icon.png
