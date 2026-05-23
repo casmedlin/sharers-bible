@@ -8,17 +8,34 @@ A multi-platform Bible application designed for sharing and study. Contains nati
 - **Sharers Bible iOS** — Native iOS app for iPhone and iPad.
 - **Sharers Bible Web** — Modern web version built with React + TypeScript + Vite. PWA-ready with responsive UI.
 - **Sharers Bible TrueNAS** — Self-hosted version for TrueNAS/Docker environments.
+- **Sharers Bible Linux** — Native Linux app (Python + GTK4), packaged for Flatpak and Snapcraft.
+- **Sharers Bible Windows** — Native Windows app (Go + Fyne).
 
 ## 🚀 macOS App Quick Start
 
 ```bash
 cd "Sharer's Bible App"
-xcrun swiftc -sdk $(xcrun --sdk macosx --show-sdk-path) -parse-as-library \
-  -o "build/Sharer's Bible App.app/Contents/MacOS/Sharer's Bible App" \
-  -Xlinker -rpath -Xlinker /usr/lib/swift ContentView.swift
+make dmg
 ```
 
+Or using the build script:
+
+```bash
+cd "Sharer's Bible App"
+./build_dmg.sh
+```
+
+This produces `build/Sharer's Bible App.dmg` — a drag installer. Users open the DMG and drag the app into their Applications folder.
+
 The app is a single Swift file (`ContentView.swift`, ~4000 lines) compiled directly with `swiftc`. No Xcode project, Swift Package Manager, or CocoaPods needed.
+
+### Build Commands
+
+| Command | Description |
+|---------|-------------|
+| `make build` | Compile the `.app` bundle |
+| `make dmg` | Build + create DMG installer |
+| `make clean` | Remove all build artifacts |
 
 ### Data Sources
 - **Bundled offline**: KJV + ESV (`bibles/en/kjv.json`, `bibles/en/esv.json`)
@@ -46,6 +63,8 @@ Containerized deployment for personal home servers via `docker-compose`.
 - **Desktop**: SwiftUI (macOS 14+), compiled with `swiftc`
 - **Mobile**: SwiftUI (iOS)
 - **Web**: React, TypeScript, Vite
+- **Linux**: Python, GTK4 (PyGObject), Flatpak, Snapcraft
+- **Windows**: Go, Fyne
 - **Deployment**: Docker, TrueNAS
 
 ## 📝 License

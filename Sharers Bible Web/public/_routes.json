@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/assets/*",
+    "/bibles/*",
+    "/favicon.png",
+    "/bible.svg",
+    "/vite.svg",
+    "/manifest.webmanifest",
+    "/sw.js",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/_headers",
+    "/_redirects"
+  ]
+}

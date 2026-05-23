@@ -32,6 +32,14 @@ Thumbs.db
 .env.test.local
 .env.production.local
 
+# Python
+__pycache__/
+*.pyc
+
+# Go binaries
+*.exe
+sharers-bible
+
 # IDE files
 .vscode/
 .idea/

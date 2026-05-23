@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Sharer's Bible
+Comment=Read and Share God's Word
+Exec=sharers-bible
+Icon=org.sharersbible.app
+Terminal=false
+Type=Application
+Categories=Education;Spirituality;

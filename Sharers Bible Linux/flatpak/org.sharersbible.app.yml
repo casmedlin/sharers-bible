@@ -1,0 +1,32 @@
+id: org.sharersbible.app
+runtime: org.gnome.Platform
+runtime-version: "45"
+sdk: org.gnome.Sdk
+command: sharers-bible
+
+finish-args:
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --filesystem=home
+
+modules:
+  - name: python-deps
+    buildsystem: simple
+    build-commands:
+      - pip3 install --prefix=/app PyGObject requests
+
+  - name: sharers-bible
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 main.py /app/bin/sharers-bible
+      - install -Dm644 manifest.json /app/share/sharers-bible/manifest.json
+      - install -Dm644 flatpak/org.sharersbible.app.desktop /app/share/applications/org.sharersbible.app.desktop
+      - install -Dm644 flatpak/org.sharersbible.app.metainfo.xml /app/share/metainfo/org.sharersbible.app.metainfo.xml
+      - mkdir -p /app/bin
+      - printf '#!/bin/sh\nexec /app/bin/python3 /app/bin/sharers-bible\n' > /app/bin/sharers-bible-wrapper
+      - chmod +x /app/bin/sharers-bible-wrapper
+    sources:
+      - type: dir
+        path: ..

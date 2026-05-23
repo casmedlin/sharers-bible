@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.sharersbible.app</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Sharer's Bible</name>
+  <summary>Read and Share God's Word</summary>
+  <description>
+    <p>Sharer's Bible is a modern, cross-platform Bible reading application with support for over 190 translations in 21 languages. Features include:</p>
+    <ul>
+      <li>196 Bible translations across 21 languages</li>
+      <li>Offline download and caching</li>
+      <li>Multiple themes: Light, Dark, Sepia, and System</li>
+      <li>Adjustable font size</li>
+      <li>Export passages to Markdown and HTML</li>
+      <li>Full localization in 21 languages</li>
+      <li>Verse range selection</li>
+      <li>Copy passages to clipboard</li>
+    </ul>
+  </description>
+  <url type="homepage">https://bible.wbem.org</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://bible.wbem.org/screenshot.png</image>
+      <caption>Reading view with navigation controls</caption>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">org.sharersbible.app.desktop</launchable>
+  <provides>
+    <id>org.sharersbible.app.desktop</id>
+  </provides>
+  <releases>
+    <release version="1.0.0" date="2025-01-01">
+      <description>
+        <p>Initial Linux release with full feature parity.</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
+</component>

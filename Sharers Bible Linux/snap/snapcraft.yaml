@@ -1,0 +1,50 @@
+name: sharers-bible
+base: core22
+version: "1.0.0"
+summary: Read and Share God's Word
+description: |
+  Sharer's Bible is a modern, cross-platform Bible reading application
+  with support for over 190 translations in 21 languages. Features include
+  196 Bible translations, offline download and caching, multiple themes,
+  adjustable font size, and export capabilities.
+
+grade: stable
+confinement: strict
+
+apps:
+  sharers-bible:
+    command: bin/python3 $SNAP/main.py
+    extensions: [gnome]
+    plugs:
+      - network
+      - home
+      - removable-media
+      - desktop
+      - desktop-legacy
+      - wayland
+      - x11
+
+parts:
+  python-deps:
+    plugin: python
+    source: .
+    python-packages:
+      - PyGObject>=3.42.0
+      - requests>=2.28.0
+    build-packages:
+      - libgirepository1.0-dev
+      - libgtk-4-dev
+      - pkg-config
+    stage-packages:
+      - libgirepository-1.0-1
+      - libgtk-4-1
+      - python3-gi
+      - python3-requests
+
+  app:
+    plugin: dump
+    source: .
+    organize:
+      main.py: main.py
+      manifest.json: manifest.json
+    after: [python-deps]
