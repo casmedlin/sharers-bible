@@ -43,11 +43,27 @@ python3 main.py
 make flatpak
 ```
 
+Flatpak builds for whatever architecture you're on (x86_64 or aarch64). The GNOME runtime supports both.
+
 ## Build Snap
 
 ```bash
 make snap
 ```
+
+Snapcraft builds for the current architecture by default. For cross-arch builds:
+```bash
+snapcraft --target-arch=arm64
+```
+
+## Architecture Support
+
+| Arch | Flatpak | Snap |
+|------|---------|------|
+| x86_64 | ✓ | ✓ |
+| ARM64 (aarch64) | ✓ | ✓ |
+
+Python/GTK4 is arch-independent — the native libraries come from the platform runtime.
 
 ## Configuration
 

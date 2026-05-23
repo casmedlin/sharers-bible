@@ -20,9 +20,17 @@ A native Windows Bible reading application built with Go and Fyne.
 
 ## Build
 
+### x64
 ```bash
 go mod tidy
-go build -o sharers-bible.exe
+set GOARCH=amd64
+go build -o sharers-bible-x64.exe
+```
+
+### ARM64
+```bash
+set GOARCH=arm64
+go build -o sharers-bible-arm64.exe
 ```
 
 Package as Windows installer:
@@ -35,7 +43,7 @@ fyne package -os windows -icon icon.png
 ```bash
 go run .
 # or
-./sharers-bible.exe
+sharers-bible.exe
 ```
 
 ## Configuration
